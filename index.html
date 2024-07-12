@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar QR Code apartir de ASCII</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            width: 160px;
+            height: 160px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerar QR Code apartir de ASCII</h1>
+    <textarea id="asciiInput" rows="4" cols="50" placeholder="Enter ASCII code here"></textarea><br>
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQRCode() {
+            const asciiCode = document.getElementById('asciiInput').value;
+            if (asciiCode.trim() === '') {
+                alert('Please enter an ASCII code.');
+                return;
+            }
+
+            // Clear any existing QR code
+            document.getElementById('qrcode').innerHTML = '';
+
+            // Generate the QR code
+            new QRCode(document.getElementById('qrcode'), asciiCode);
+        }
+    </script>
+</body>
+</html>
